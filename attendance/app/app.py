@@ -8,7 +8,7 @@ import csv
 import pandas as pd
 import sftp
 import createattendance
-
+import numpy as np
 
 
 
@@ -21,6 +21,7 @@ def read_csv():
 	global empdata
 	empdata = pd.read_csv(csv_file, encoding='utf8',delimiter = ',')
 	empdata = empdata.where((pd.notnull(empdata)), None)
+	empdata.fillna(0,inplace=True)
 	empdata.head()
 
 
@@ -50,8 +51,8 @@ def createdatabase():
             #here %S means string values 
             sql = "INSERT INTO devopsroles.student_data VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s )"
             empdata.fillna(0)
-            print(sql, tuple(row))
-           # cursor.execute(sql, tuple(row))
+            #print(sql, tuple(row))
+            cursor.execute(sql, tuple(row))
             
             connection.commit()
     cursor.close()

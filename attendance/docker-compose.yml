@@ -10,7 +10,7 @@ services:
       - ./db:/docker-entrypoint-initdb.d/:ro
   app:
     build: ./app
-    image: attendance:v1.0
+    image: attendance:v1.1
     links:
       - db
     ports:
