@@ -1,5 +1,3 @@
-**
-**
 # Attendance Project
 web application based on flask, mysql deployed with docker compose.
 
